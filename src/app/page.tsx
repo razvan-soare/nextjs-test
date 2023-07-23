@@ -1,6 +1,14 @@
-import Image from 'next/image'
+'use client';
+import Image from 'next/image';
+import { useEffect } from 'react';
+import axios from 'axios';
 
 export default function Home() {
+  useEffect(() => {
+    axios.get('http://localhost:8080/').then((res) => {
+      console.log('Response: ', res.data);
+    });
+  });
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
@@ -109,5 +117,5 @@ export default function Home() {
         </a>
       </div>
     </main>
-  )
+  );
 }
